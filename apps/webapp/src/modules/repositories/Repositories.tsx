@@ -23,7 +23,7 @@ export default function Repositories() {
 
   return (
     <PageLayout>
-      <PageContent title="Github Repository Scanner">
+      <PageContent title="GitHub Repository Scanner">
         <QueryResult
           ContentPlaceholder={RepositoriesContentPlaceholder}
           error={error}

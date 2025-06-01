@@ -27,7 +27,7 @@ function QueryResult<TData>({ loading, error, data, render, ContentPlaceholder }
   }
 
   return <>{data && render(data)}</>
-};
+}
 
 const QueryResultWithErrorBoundary = withErrorBoundary<QueryResultProps<any>>({ ErrorComponent: GeneralError })(QueryResult)
 
