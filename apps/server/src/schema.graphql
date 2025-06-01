@@ -1,0 +1,41 @@
+enum Visibility {
+  Public, 
+  Private 
+}
+
+type Owner {
+  id: ID!
+  login: String!
+}
+
+type FileInfo {
+  exampleYamlFileContent: String
+  totalCount: Int!
+}
+
+type WebhookConfig {
+  contentType: String!
+  url: String!
+}
+
+type Webhook {
+  id: ID!
+  events: [String!]!
+  url: String!
+  config: WebhookConfig!
+}
+
+type Repository {
+  id: ID!
+  fileInfo: FileInfo!
+  name: String!
+  owner: Owner!
+  size: String!
+  visibility: Visibility!
+  webhooks: [Webhook!]!
+}
+
+type Query { 
+  repositories: [Repository!]!
+  repository(owner: String!, name: String!): Repository
+}

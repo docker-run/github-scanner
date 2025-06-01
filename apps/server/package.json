@@ -1,0 +1,39 @@
+{
+  "name": "@github-scanner/server",
+  "private": true,
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=18.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "concurrently \"ts-node-dev --respawn ./src/index.ts\" \"npm run generate\"",
+    "start": "npm run compile && nodemon ./dist/index.js",
+    "generate": "graphql-codegen --watch \"src/schema.graphql\""
+  },
+  "dependencies": {
+    "@apollo/datasource-rest": "^6.4.1",
+    "@apollo/server": "^4.12.1",
+    "@parcel/watcher": "^2.4.0",
+    "graphql": "^16.11.0",
+    "graphql-tag": "^2.12.6",
+    "p-limit": "^6.2.0",
+    "pretty-bytes": "^7.0.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.6",
+    "@graphql-codegen/typescript": "^4.1.6",
+    "@graphql-codegen/typescript-resolvers": "^4.5.1",
+    "@types/node": "^22.15.29",
+    "concurrently": "^8.2.2",
+    "graphql-import-node": "^0.0.5",
+    "jest": "^29.0.3",
+    "nodemon": "^3.0.0",
+    "ts-jest": "^29.0.2",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.0.0"
+  }
+}

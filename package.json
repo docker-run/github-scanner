@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "github-scanner",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.15.28",
+    "turbo": "^2.5.3"
+  },
+  "workspaces": [
+    "apps/*"
+  ],
+  "packageManager": "npm@10.0.0"
+}
