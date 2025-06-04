@@ -1,5 +1,5 @@
-import prettyBytes from "pretty-bytes";
 import { Resolvers, Visibility } from "./types";
+import { filesize } from "filesize";
 
 export const resolvers: Resolvers = {
   Query: {
@@ -13,7 +13,7 @@ export const resolvers: Resolvers = {
 
   Repository: {
     size: ({ size }) => {
-      return prettyBytes(size * 1024, { space: false })
+      return filesize(size * 1024, { standard: "jedec" })
     },
     visibility: ({ private: isRepositoryPrivate }) => {
       return isRepositoryPrivate ? Visibility.Private : Visibility.Public

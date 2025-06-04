@@ -1,9 +1,8 @@
-import pLimit from 'p-limit';
+import * as Throttle from 'promise-parallel-throttle';
 import { GitHubAPI } from '../datasources/github-api';
 import { FileInfo } from '../types';
 
 const CONCURRENCY_LIMIT = 2;
-const limit = pLimit(CONCURRENCY_LIMIT);
 const REPOSITORIES = ["repoA", "repoB", "repoC"]
 
 export class RepositoryService {
@@ -12,8 +11,9 @@ export class RepositoryService {
   async getRepositories() {
     const owner = await this.api.getCurrentUser();
 
-    return Promise.all(
-      REPOSITORIES.map((name) => limit(() => this.api.getRepository(owner, name)))
+    return Throttle.all(
+      REPOSITORIES.map((name) => (() => this.api.getRepository(owner, name))),
+      { maxInProgress: CONCURRENCY_LIMIT }
     );
   }
 
