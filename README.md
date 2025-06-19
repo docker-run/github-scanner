@@ -1,6 +1,8 @@
-# GitHub Scanner
+# GitHub Scanner - Interview Task
 
 A **full-stack GitHub repository explorer** built with **TurboRepo**.
+
+Note: The implementation is done according to the requirements from a company as a part of interview process. 
 
 ## Contents
 
